@@ -7,6 +7,8 @@
 //
 
 #import "JRMPokemonListViewController.h"
+#import "JRMPokemonRepository.h"
+#import "JRMPokemon.h"
 
 @interface JRMPokemonListViewController ()
 
@@ -17,6 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [JRMPokemonRepository getPokemonWithId:1
+                                completion:^(bool succeded, JRMPokemon* pokemon) {
+                                    if (succeded) {
+                                        NSLog([pokemon description]);
+                                    }
+                                }];
 }
 
 

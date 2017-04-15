@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PokemonListViewController : UIViewController
+@interface JRMPokemonListViewController : UIViewController
 
 
 @end

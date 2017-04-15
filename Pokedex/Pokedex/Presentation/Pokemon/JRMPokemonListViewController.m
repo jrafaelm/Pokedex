@@ -6,13 +6,13 @@
 //  Copyright © 2017 Rafael Moraes. All rights reserved.
 //
 
-#import "PokemonListViewController.h"
+#import "JRMPokemonListViewController.h"
 
-@interface PokemonListViewController ()
+@interface JRMPokemonListViewController ()
 
 @end
 
-@implementation PokemonListViewController
+@implementation JRMPokemonListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -10,9 +10,7 @@
 #import "JRMPokemonRepository.h"
 #import "JRMPokemon.h"
 #import "JRMPokemonTableViewCell.h"
-
-#define POKEMON_COUNT 721
-#define POKEMON_MEGA_COUNT 90
+#import "JRMPokemonDetailViewController.h"
 
 @interface JRMPokemonListViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -74,7 +72,23 @@
     JRMPokemonTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"JRMPokemonTableViewCellId"];
     JRMPokemon *pokemon = (JRMPokemon*) self.pokemons[indexPath.row];
     cell.pokemon = pokemon;
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma MARK - Navigation
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([sender isKindOfClass:[JRMPokemonTableViewCell class]]
+       && [segue.destinationViewController isKindOfClass:[JRMPokemonDetailViewController class]]) {
+        JRMPokemonDetailViewController *detailVC = segue.destinationViewController;
+        JRMPokemonTableViewCell * cell = sender;
+        detailVC.pokemon = cell.pokemon;
+    }
 }
 
 @end

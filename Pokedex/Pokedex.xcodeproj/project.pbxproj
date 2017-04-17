@@ -22,6 +22,7 @@
 		2879C1891EA25D5C00725F57 /* JRMSprites.m in Sources */ = {isa = PBXBuildFile; fileRef = 2879C1881EA25D5C00725F57 /* JRMSprites.m */; };
 		2879C18C1EA260C300725F57 /* JRMPokemonRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 2879C18B1EA260C300725F57 /* JRMPokemonRepository.m */; };
 		28FC2FE21EA3B6080069ACCB /* JRMPokemonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC2FE11EA3B6080069ACCB /* JRMPokemonTableViewCell.m */; };
+		28FC2FE51EA55C5A0069ACCB /* JRMPokemonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FC2FE41EA55C590069ACCB /* JRMPokemonDetailViewController.m */; };
 		7E62F5DFEF32F87BE2F2A5CF /* libPods-PokedexTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E724A9EE703FC3978A9B8A /* libPods-PokedexTests.a */; };
 		D873F116AE113258238CB4DF /* libPods-PokedexUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80871E458334CEAE790B581D /* libPods-PokedexUITests.a */; };
 		DA0829A908E1D8691D82A776 /* libPods-Pokedex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8EF77CF9E298C350D5B143 /* libPods-Pokedex.a */; };
@@ -76,6 +77,8 @@
 		2879C18B1EA260C300725F57 /* JRMPokemonRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRMPokemonRepository.m; sourceTree = "<group>"; };
 		28FC2FE01EA3B6080069ACCB /* JRMPokemonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRMPokemonTableViewCell.h; sourceTree = "<group>"; };
 		28FC2FE11EA3B6080069ACCB /* JRMPokemonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRMPokemonTableViewCell.m; sourceTree = "<group>"; };
+		28FC2FE31EA55C590069ACCB /* JRMPokemonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRMPokemonDetailViewController.h; sourceTree = "<group>"; };
+		28FC2FE41EA55C590069ACCB /* JRMPokemonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRMPokemonDetailViewController.m; sourceTree = "<group>"; };
 		2E382D646DCC2EC75FB78BDE /* Pods-PokedexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokedexUITests/Pods-PokedexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3F8EF77CF9E298C350D5B143 /* libPods-Pokedex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pokedex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A88837F8C8F9819066B205 /* Pods-PokedexUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokedexUITests/Pods-PokedexUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				2879C17E1EA25B2C00725F57 /* JRMPokemonListViewController.m */,
 				28FC2FE01EA3B6080069ACCB /* JRMPokemonTableViewCell.h */,
 				28FC2FE11EA3B6080069ACCB /* JRMPokemonTableViewCell.m */,
+				28FC2FE31EA55C590069ACCB /* JRMPokemonDetailViewController.h */,
+				28FC2FE41EA55C590069ACCB /* JRMPokemonDetailViewController.m */,
 			);
 			path = Pokemon;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				28FC2FE21EA3B6080069ACCB /* JRMPokemonTableViewCell.m in Sources */,
 				2879C1821EA25B2C00725F57 /* PlankModelRuntime.m in Sources */,
 				2879C1371EA02DC300725F57 /* main.m in Sources */,
+				28FC2FE51EA55C5A0069ACCB /* JRMPokemonDetailViewController.m in Sources */,
 				2879C17F1EA25B2C00725F57 /* JRMPokemon.m in Sources */,
 				2879C1861EA25B2C00725F57 /* JRMPokemonListViewController.m in Sources */,
 			);

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JRMPokemon.h"
+#import "JRMPokemon+Color.h"
 
 @interface JRMPokemonTableViewCell : UITableViewCell
 

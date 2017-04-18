@@ -9,11 +9,10 @@
 #import "JRMPokemonListViewController.h"
 #import "JRMPokemonRepository.h"
 #import "JRMPokemon.h"
+#import "JRMPokemonTableViewCell.h"
+#import "JRMPokemonDetailViewController.h"
 
-#define POKEMON_COUNT 721
-#define POKEMON_MEGA_COUNT 90
-
-@interface JRMPokemonListViewController ()
+@interface JRMPokemonListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSMutableArray *pokemons;
 @property (nonatomic) NSInteger completedFetchCount;
@@ -23,16 +22,19 @@
 
 @implementation JRMPokemonListViewController
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.pokemons = [NSMutableArray array];
-    for (int i = 1; i <= POKEMON_COUNT ; i++) {
-        [self requestPokemonWithId:i];
-    }
-    for (int i = 1; i <= POKEMON_MEGA_COUNT ; i++) {
-        [self requestPokemonWithId: 10000 + i];
-    }
+    
+    self.tableView.estimatedRowHeight = 100.f;
+    
+    [self requestPokemonWithId:1];
     
 }
 
@@ -43,25 +45,50 @@
     [JRMPokemonRepository getPokemonWithId:identifier
                                 completion:^(bool succeded, JRMPokemon* pokemon) {
                                     if (succeded) {
-                                        [weakSelf.pokemons addObject:pokemon];
-                                        NSLog(@"Pokemon fetch: %ld, %@",identifier, pokemon.name);
-                                        weakSelf.completedFetchCount += 1;
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [weakSelf.pokemons addObject:pokemon];
+                                            [weakSelf requestPokemonWithId:(identifier + 1)];
+                                            [weakSelf.tableView reloadData];
+                                        });
                                     }
                                 }];
 }
 
-//TODO Replace with reactive
-- (void)setCompletedFetchCount:(NSInteger)completedFetchCount {
-    _completedFetchCount = completedFetchCount;
-    if (completedFetchCount == POKEMON_COUNT + POKEMON_MEGA_COUNT) {
-        [self.tableView reloadData];
+#pragma MARK - UITableView DataSource & Delegate
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.pokemons.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    JRMPokemonTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"JRMPokemonTableViewCellId"];
+    JRMPokemon *pokemon = (JRMPokemon*) self.pokemons[indexPath.row];
+    cell.pokemon = pokemon;
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma MARK - Navigation
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([sender isKindOfClass:[JRMPokemonTableViewCell class]]
+       && [segue.destinationViewController isKindOfClass:[JRMPokemonDetailViewController class]]) {
+        JRMPokemonDetailViewController *detailVC = segue.destinationViewController;
+        JRMPokemonTableViewCell * cell = sender;
+        detailVC.pokemon = cell.pokemon;
     }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-669" y="53"/>
         </scene>
-        <!--Pokemon List View Controller-->
+        <!--List-->
         <scene sceneID="hRH-DE-ETE">
             <objects>
-                <viewController id="XbD-nv-tml" customClass="JRMPokemonListViewController" sceneMemberID="viewController">
+                <viewController title="List" automaticallyAdjustsScrollViewInsets="NO" id="XbD-nv-tml" customClass="JRMPokemonListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3OH-mr-SYF"/>
                         <viewControllerLayoutGuide type="bottom" id="OJB-bd-Cbb"/>
@@ -33,13 +33,87 @@
                     <view key="view" contentMode="scaleToFill" id="ZkS-9A-Vn2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QwN-IH-q16">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JRMPokemonTableViewCellId" rowHeight="100" id="Byg-Bx-4ze" customClass="JRMPokemonTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Byg-Bx-4ze" id="Vxg-wr-i8v">
+                                            <frame key="frameInset" width="375" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eXf-p7-rDb">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="2KG-aa-vS4"/>
+                                                        <constraint firstAttribute="width" constant="80" id="w2a-aa-pIs"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnl-Lk-ECz">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eXf-p7-rDb" firstAttribute="centerY" secondItem="Vxg-wr-i8v" secondAttribute="centerY" id="X17-eX-w85"/>
+                                                <constraint firstItem="eXf-p7-rDb" firstAttribute="leading" secondItem="Vxg-wr-i8v" secondAttribute="leading" constant="8" id="Zyq-ws-doD"/>
+                                                <constraint firstItem="Tnl-Lk-ECz" firstAttribute="leading" secondItem="eXf-p7-rDb" secondAttribute="trailing" constant="8" id="a6Q-5u-qyJ"/>
+                                                <constraint firstItem="Tnl-Lk-ECz" firstAttribute="centerY" secondItem="eXf-p7-rDb" secondAttribute="centerY" id="awP-LW-9qO"/>
+                                                <constraint firstAttribute="trailing" secondItem="Tnl-Lk-ECz" secondAttribute="trailing" constant="8" id="d1q-Qq-Ryy"/>
+                                                <constraint firstAttribute="bottom" secondItem="eXf-p7-rDb" secondAttribute="bottom" constant="10" id="d2w-HI-Ex2"/>
+                                                <constraint firstItem="eXf-p7-rDb" firstAttribute="top" secondItem="Vxg-wr-i8v" secondAttribute="top" constant="10" id="ota-3T-1jv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1176470588" green="0.72156862749999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="ivSprite" destination="eXf-p7-rDb" id="Zks-UV-CG6"/>
+                                            <outlet property="lblName" destination="Tnl-Lk-ECz" id="2dY-Wf-QUw"/>
+                                            <segue destination="0y1-wL-myN" kind="show" id="3Xl-0W-RHl"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XbD-nv-tml" id="sQd-NV-qsr"/>
+                                    <outlet property="delegate" destination="XbD-nv-tml" id="OGv-mL-cq5"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QwN-IH-q16" firstAttribute="top" secondItem="3OH-mr-SYF" secondAttribute="bottom" id="4y8-lx-aai"/>
+                            <constraint firstItem="QwN-IH-q16" firstAttribute="leading" secondItem="ZkS-9A-Vn2" secondAttribute="leading" id="WlC-9D-6DP"/>
+                            <constraint firstItem="OJB-bd-Cbb" firstAttribute="top" secondItem="QwN-IH-q16" secondAttribute="bottom" id="X2A-aC-Rbf"/>
+                            <constraint firstAttribute="trailing" secondItem="QwN-IH-q16" secondAttribute="trailing" id="kc0-08-cub"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iex-4B-WKW"/>
+                    <navigationItem key="navigationItem" title="Pokedéx" id="iex-4B-WKW"/>
+                    <connections>
+                        <outlet property="tableView" destination="QwN-IH-q16" id="H2g-Dk-tja"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rwu-19-Ref" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="53"/>
+            <point key="canvasLocation" x="69.599999999999994" y="52.623688155922046"/>
+        </scene>
+        <!--Pokemon Detail View Controller-->
+        <scene sceneID="Lqj-dG-sH8">
+            <objects>
+                <viewController id="0y1-wL-myN" customClass="JRMPokemonDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LCf-AR-y7R"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lg7-UH-2hH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9zl-bQ-f26" customClass="JRMPokemonTableViewCell">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lC7-T2-ylQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="53"/>
         </scene>
     </scenes>
 </document>
